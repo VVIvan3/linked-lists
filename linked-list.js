@@ -66,7 +66,12 @@ class LinkedList {
   }
 
   contains(value) {
-    // return true if value in the list
+    let node = this.nodeList;
+    while (node !== null) {
+      if (node.value === value) return true;
+      node = node.nextNode;
+    }
+    return false;
   }
 
   find(value) {
