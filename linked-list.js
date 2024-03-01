@@ -97,11 +97,37 @@ class LinkedList {
   }
 
   insertAt(value, index) {
-    // insert node at given index
+    const insertedNode = new Node(value);
+    let currentNode = this.nodeList;
+    let prevNode = currentNode;
+    let counter = 0;
+    while (currentNode !== null) {
+      if (counter === index) {
+        insertedNode.nextNode = currentNode;
+        prevNode.nextNode = insertedNode;
+        return;
+      }
+      counter++;
+      prevNode = currentNode;
+      currentNode = currentNode.nextNode;
+    }
+    return null;
   }
 
   removeAt(index) {
-    // remove node at given index
+    let currentNode = this.nodeList;
+    let prevNode = currentNode;
+    let counter = 0;
+    while (currentNode !== null) {
+      if (counter === index) {
+        prevNode.nextNode = currentNode.nextNode
+        return;
+      }
+      counter++;
+      prevNode = currentNode;
+      currentNode = currentNode.nextNode;
+    }
+    return null;
   }
 }
 
@@ -132,14 +158,27 @@ console.log(listTwo.at(2));
 console.log(listTwo.find("test"));
 console.log(listTwo.find("secondval"));
 
-const listThree = new LinkedList()
+const listThree = new LinkedList();
 listThree.append("1");
 listThree.append("2");
 listThree.append("3");
 listThree.append("4");
-console.log(listThree.toString())
-listThree.pop()
-console.log(listThree.toString())
-listThree.pop()
-listThree.pop()
-console.log(listThree.toString())
+console.log(listThree.toString());
+listThree.pop();
+console.log(listThree.toString());
+listThree.pop();
+listThree.pop();
+console.log(listThree.toString());
+
+const listFour = new LinkedList();
+listFour.append("0");
+listFour.append("1");
+listFour.append("3");
+listFour.append("5");
+console.log(listFour.toString());
+listFour.insertAt("2", 2);
+console.log(listFour.toString());
+listFour.insertAt("4", 4);
+console.log(listFour.toString());
+listFour.removeAt(4)
+console.log(listFour.toString());
