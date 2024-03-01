@@ -31,8 +31,9 @@ class LinkedList {
     }
     return counter;
   }
+  
   head() {
-    // return first node
+    return this.nodeList;
   }
 
   tail() {
@@ -44,7 +45,14 @@ class LinkedList {
   }
 
   at(index) {
-    // return node at index
+    let counter = 0;
+    let node = this.nodeList;
+    while (counter !== index) {
+      if (node == null) return null;
+      counter++;
+      node = node.nextNode;
+    }
+    return node;
   }
 
   pop() {
@@ -56,7 +64,14 @@ class LinkedList {
   }
 
   find(value) {
-    // return index of search value
+    let node = this.nodeList;
+    let counter = 0;
+    while (node !== null) {
+      if (node.value === value) return counter;
+      node = node.nextNode;
+      counter++;
+    }
+    return null;
   }
 
   toString() {
@@ -99,3 +114,9 @@ listTwo.prepend("secondval");
 listTwo.prepend("firstval");
 console.log(listTwo.toString());
 console.log(listTwo.size());
+console.log(listTwo.at(0));
+console.log(listTwo.at(1));
+console.log(listTwo.at(4));
+console.log(listTwo.at(2));
+console.log(listTwo.find("test"));
+console.log(listTwo.find("secondval"));
