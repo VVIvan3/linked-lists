@@ -31,7 +31,7 @@ class LinkedList {
     }
     return counter;
   }
-  
+
   head() {
     return this.nodeList;
   }
@@ -56,7 +56,13 @@ class LinkedList {
   }
 
   pop() {
-    // remove last item
+    let currentNode = this.nodeList;
+    let prevNode;
+    while (currentNode.nextNode !== null) {
+      prevNode = currentNode;
+      currentNode = currentNode.nextNode;
+    }
+    prevNode.nextNode = null;
   }
 
   contains(value) {
@@ -120,3 +126,15 @@ console.log(listTwo.at(4));
 console.log(listTwo.at(2));
 console.log(listTwo.find("test"));
 console.log(listTwo.find("secondval"));
+
+const listThree = new LinkedList()
+listThree.append("1");
+listThree.append("2");
+listThree.append("3");
+listThree.append("4");
+console.log(listThree.toString())
+listThree.pop()
+console.log(listThree.toString())
+listThree.pop()
+listThree.pop()
+console.log(listThree.toString())
